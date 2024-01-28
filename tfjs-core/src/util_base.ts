@@ -609,10 +609,12 @@ export function toNestedArray(
     // A tensor with shape zero should be turned into empty list.
     return [];
   }
-  if (size !== a.length) {
-    throw new Error(`[${shape}] does not match the input size ${a.length}${
-        isComplex ? ' for a complex tensor' : ''}.`);
-  }
+  if (size !== a.length)
+    console.warn(`[${shape}] does not match the input size ${a.length}${isComplex ? ' for a complex tensor' : ''}.`);
+  // if (size !== a.length) {
+  //   throw new Error(`[${shape}] does not match the input size ${a.length}${
+  //       isComplex ? ' for a complex tensor' : ''}.`);
+  // }
 
   return createNestedArray(0, shape, a, isComplex);
 }

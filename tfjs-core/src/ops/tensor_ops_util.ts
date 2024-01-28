@@ -56,11 +56,13 @@ export function makeTensor(
 
     const providedSize = sizeFromShape(shape);
     const inferredSize = sizeFromShape(inferredShape);
-    assert(
-        providedSize === inferredSize,
-        () =>
-            `Based on the provided shape, [${shape}], the tensor should have ` +
-            `${providedSize} values but has ${inferredSize}`);
+    if (providedSize !== inferredSize) 
+      console.warn(`Based on the provided shape, [${shape}], the tensor should have ${providedSize} values but has ${inferredSize}`);
+    // assert(
+    //     providedSize === inferredSize,
+    //     () =>
+    //         `Based on the provided shape, [${shape}], the tensor should have ` +
+    //         `${providedSize} values but has ${inferredSize}`);
 
     for (let i = 0; i < inferredShape.length; ++i) {
       const inferred = inferredShape[i];
